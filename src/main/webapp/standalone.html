@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>FileUploader2</title>
+<script type="text/javascript" src="./swfobject.js"></script>
+</head>
+
+<body>
+<div style="width:500px;margin:150px auto;">
+<div id="uploader">
+<script type="text/javascript">
+ /** CONFIG SETTINGS FOR THE FILE UPLOADER **/
+  var flashvars = {
+  	/** 
+	 * the url of the upload target file which processes the file uploads
+	 */
+	uploadUrl : 'upload.php',
+  	/** 
+	 * the maximum file size that can be upload in Bytes
+	 */
+	maxFileSize : (20 * 1024 * 1024), // 20mb
+  	/** 
+	 * the maximum size of a single post request in Bytes that can be uploaded
+	 * As the BigFileUpload transfers big files with several requests,
+	 * this setting specifies the maximum size of one of these requests.
+	 */
+	maxPostSize : (2 * 1024 * 1024) // 2mb
+  	/** 
+	 * a comma seperated list of file endings that are allowed to be uploaded
+	 */
+	//fileFilter : 'jpg,jpeg,png,gif'
+  	/** 
+	 * The maximum number of files that can be added to the upload list
+	 */
+	//maxFiles : 20
+  };
+  swfobject.embedSWF("FileUploaderStandalone.swf", "uploader", "500", "350", "10.0.0", "", flashvars);
+</script>
+<noscript><div class="swfNoScript" style="width:400px;height:400px"></div></noscript>
+</div>
+</div>
+</body>
+</html>
