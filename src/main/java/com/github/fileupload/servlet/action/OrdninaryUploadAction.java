@@ -56,7 +56,7 @@ public class OrdninaryUploadAction implements UploadAction {
     public boolean paser(HttpServletRequest req, PrintWriter resp) throws ActionException {
         String fileName = req.getParameter("fileName");
         String fileSize = req.getParameter("fileSize");
-
+        int fileOverwrite = Integer.parseInt(req.getParameter("fileOverwrite"));
         boolean isMutipart = ServletFileUpload.isMultipartContent(req);
         if(!isMutipart){
             resp.write(MessageHandler.getErrorMessage("Multipart错误"));
@@ -75,6 +75,10 @@ public class OrdninaryUploadAction implements UploadAction {
                 }
                 File fullFile = new File(fileName);
                 File savedFile = new File(uploadPath, fullFile.getName());
+
+                if(fileOverwrite==1){
+                    savedFile.delete();
+                }
                 fi.write(savedFile);
 
             }
