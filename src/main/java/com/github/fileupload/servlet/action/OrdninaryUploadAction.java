@@ -14,15 +14,28 @@ import java.util.List;
 
 public class OrdninaryUploadAction implements UploadAction {
 
-    private String tempPath = "D:\\temp\\buffer\\";
-    private String uploadPath="D:\\temp";
+    private String tempPath = "target\\buffer\\";
+    private String uploadPath="target";
+    private File uploadPathFile;
+    private  File tempPathFile;
+
+    public OrdninaryUploadAction(){
+        uploadPathFile = new File(uploadPath);
+
+        if(!uploadPathFile.exists()) {
+            uploadPathFile.mkdir();
+        }
+
+        tempPathFile = new File(uploadPath);
+        if(!tempPathFile.exists()) {
+            tempPathFile.mkdir();
+        }
+    }
 
     @Override
     public boolean paser(HttpServletRequest req, PrintWriter resp) throws ActionException {
         String fileName = req.getParameter("fileName");
         String fileSize = req.getParameter("fileSize");
-
-        File tempPathFile = new File(tempPath);
 
         boolean isMutipart = ServletFileUpload.isMultipartContent(req);
         if(!isMutipart){
@@ -63,4 +76,7 @@ public class OrdninaryUploadAction implements UploadAction {
         resp.write("<success/>");
         return true;
     }
+
+
+
 }
