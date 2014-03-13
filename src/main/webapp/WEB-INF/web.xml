@@ -7,7 +7,7 @@
 
    <servlet>
        <servlet-name>Uploader</servlet-name>
-       <servlet-class>com.github.fileupload.servlet.Uploader</servlet-class>
+       <servlet-class>com.github.fileupload.servlet.UploaderServlet</servlet-class>
    </servlet>
 
     <servlet-mapping>

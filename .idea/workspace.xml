@@ -22,6 +22,7 @@
     <file path="/Configuration.java" changelist="757c6466-6c3b-4815-8dc5-0724fdcfea69" time="1394676473328" ignored="false" />
     <file path="/MessageHandler.java" changelist="757c6466-6c3b-4815-8dc5-0724fdcfea69" time="1394678677787" ignored="false" />
     <file path="/FileCheckAction.java" changelist="757c6466-6c3b-4815-8dc5-0724fdcfea69" time="1394679513074" ignored="false" />
+    <file path="/ErrorCode.java" changelist="757c6466-6c3b-4815-8dc5-0724fdcfea69" time="1394681874746" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,18 +86,19 @@
       <file leaf-file-name="MessageHandler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/MessageHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="60" selection-start="447" selection-end="447" vertical-scroll-proportion="0.0">
+            <state line="25" column="32" selection-start="679" selection-end="679" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OrdninaryUploadAction.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/action/OrdninaryUploadAction.java">
+      <file leaf-file-name="ErrorCode.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/action/ErrorCode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="16" selection-start="2951" selection-end="2951" vertical-scroll-proportion="0.7670753">
+            <state line="38" column="9" selection-start="1369" selection-end="1369" vertical-scroll-proportion="0.7005254">
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1008#1025#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -112,7 +114,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/paser/PaserException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/paser/UploadRequestPaser.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/paser/OrdninaryUploadRequestPaser.java" />
@@ -128,6 +129,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/action/OrdninaryUploadAction.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/action/FileCheckAction.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/swfobject.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/action/ErrorCode.java" />
       </list>
     </option>
   </component>
@@ -504,7 +506,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.67001677" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3060606" sideWeight="0.52093804" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3060606" sideWeight="0.52093804" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.479062" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -579,42 +581,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="21" selection-start="1095" selection-end="1095" vertical-scroll-proportion="0.8289703">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/commons-fileupload/commons-fileupload/1.3.1/commons-fileupload-1.3.1.jar!/org/apache/commons/fileupload/servlet/ServletFileUpload.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="66" selection-start="676" selection-end="676" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/commons-fileupload/commons-fileupload/1.3.1/commons-fileupload-1.3.1-sources.jar!/org/apache/commons/fileupload/FileUploadBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="328" column="26" selection-start="11295" selection-end="11295" vertical-scroll-proportion="-0.2635253">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/commons-fileupload/commons-fileupload/1.3.1/commons-fileupload-1.3.1-sources.jar!/org/apache/commons/fileupload/servlet/ServletFileUpload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="23" selection-start="4299" selection-end="4299" vertical-scroll-proportion="0.39965096">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.6.0_31/src.zip!/java/io/File.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="221" column="0" selection-start="9284" selection-end="9284" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/Configuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="35" selection-start="318" selection-end="318" vertical-scroll-proportion="0.39929947">
           <folding />
         </state>
       </provider>
@@ -663,32 +632,70 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/Configuration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="35" selection-start="318" selection-end="318" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/action/FileCheckAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="49" selection-start="864" selection-end="864" vertical-scroll-proportion="0.6007005">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/Uploader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="33" selection-start="1592" selection-end="1592" vertical-scroll-proportion="0.5989492">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/MessageHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="60" selection-start="447" selection-end="447" vertical-scroll-proportion="0.0">
+        <state line="28" column="49" selection-start="864" selection-end="864" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/action/OrdninaryUploadAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="16" selection-start="2951" selection-end="2951" vertical-scroll-proportion="0.7670753">
+        <state line="82" column="16" selection-start="2951" selection-end="2951" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/action/UploadAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="17" selection-start="186" selection-end="186" vertical-scroll-proportion="0.13309982">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/UploaderServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="33" selection-start="1592" selection-end="1592" vertical-scroll-proportion="0.5341506">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/action/BigFileUploadAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="13" selection-start="135" selection-end="135" vertical-scroll-proportion="0.13309982">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/action/ActionException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="13" selection-start="60" selection-end="60" vertical-scroll-proportion="0.06654991">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/MessageHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="32" selection-start="679" selection-end="679" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/fileupload/servlet/action/ErrorCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="9" selection-start="1369" selection-end="1369" vertical-scroll-proportion="0.7005254">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1008#1025#0" expanded="true" />
           </folding>
         </state>
       </provider>
