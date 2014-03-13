@@ -3,6 +3,26 @@ Flex FileUpload Component
 
 Flex FileUpload Component Java 版本, [原始代码](http://www.zehnet.de/2009/02/23/flex-fileupload-component/#more-264)提供的是基于Php实现的服务器端文件上传，这里主要使用Java重写了Php的代码。
 
+## How To Run
+
+```
+cd $PROJECT_HOME
+```
+
+Install Maven Denpen Dependencies
+
+```
+mvn clean install
+```
+
+Run Jetty Server
+
+```
+jetty:run
+```
+
+[http://localhost:9090/demo](http://localhost:9090/demo)
+
 ## Screenshots
 
 ![](src/main/webapp/img/snapshots/001.png)
