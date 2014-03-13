@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="flex-fileupload-with-java:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="flex-fileupload-with-java.war">
+      <element id="artifact" artifact-name="flex-fileupload-with-java:war exploded" />
+    </root>
+  </artifact>
+</component>
