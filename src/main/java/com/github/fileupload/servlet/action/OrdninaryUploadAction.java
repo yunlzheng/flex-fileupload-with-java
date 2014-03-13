@@ -1,5 +1,6 @@
 package com.github.fileupload.servlet.action;
 
+import com.github.fileupload.servlet.MessageHandler;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
@@ -39,7 +40,7 @@ public class OrdninaryUploadAction implements UploadAction {
 
         boolean isMutipart = ServletFileUpload.isMultipartContent(req);
         if(!isMutipart){
-            resp.write("<error>Multipart错误</error>");
+            resp.write(MessageHandler.getErrorMessage("Multipart错误"));
             return false;
         }
 
@@ -57,11 +58,6 @@ public class OrdninaryUploadAction implements UploadAction {
                 if(fi.isFormField()) {
                     continue;
                 }
-
-                System.out.println("####################################################################");
-                System.out.println(fi.getSize());
-                System.out.println();
-                System.out.println(fi.getString());
                 File fullFile = new File(fileName);
                 File savedFile = new File(uploadPath, fullFile.getName());
                 fi.write(savedFile);
@@ -69,11 +65,11 @@ public class OrdninaryUploadAction implements UploadAction {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            resp.write("<error>"+e.getMessage()+"</error>");
+            resp.write(MessageHandler.getErrorMessage(e));
             return false;
         }
 
-        resp.write("<success/>");
+        resp.write(MessageHandler.getSuccessMessage());
         return true;
     }
 
