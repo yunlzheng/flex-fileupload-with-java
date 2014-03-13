@@ -1,5 +1,6 @@
 package com.github.fileupload.servlet.action;
 
+import com.github.fileupload.servlet.Configuration;
 import com.github.fileupload.servlet.MessageHandler;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
@@ -15,22 +16,40 @@ import java.util.List;
 
 public class OrdninaryUploadAction implements UploadAction {
 
-    private String tempPath = "target\\buffer\\";
-    private String uploadPath="target";
     private File uploadPathFile;
     private  File tempPathFile;
+    private String uploadPath;
+    private Configuration configuration;
 
     public OrdninaryUploadAction(){
-        uploadPathFile = new File(uploadPath);
+        this.configuration = new Configuration();
+        this.Initialization();
+    }
 
+    public OrdninaryUploadAction(Configuration config) {
+        this.configuration = config;
+        this.Initialization();
+    }
+
+    private void Initialization() {
+        uploadPath = this.configuration.getUploadPath();
+        uploadPathFile = new File(uploadPath);
         if(!uploadPathFile.exists()) {
             uploadPathFile.mkdir();
         }
-
-        tempPathFile = new File(uploadPath);
+        tempPathFile = new File(this.configuration.getTempPath());
         if(!tempPathFile.exists()) {
             tempPathFile.mkdir();
         }
+    }
+
+    private  ServletFileUpload getServletFileUpload() {
+        DiskFileItemFactory factory = new DiskFileItemFactory();
+        // Set factory constraints
+        factory.setSizeThreshold(this.configuration.getSizeThreshold()); // 设置缓冲区大小，这里是4kb
+        factory.setRepository(tempPathFile);// 设置缓冲区目录
+        ServletFileUpload upload = new ServletFileUpload(factory);
+        return upload;
     }
 
     @Override
@@ -44,12 +63,8 @@ public class OrdninaryUploadAction implements UploadAction {
             return false;
         }
 
-        DiskFileItemFactory factory = new DiskFileItemFactory();
-        // Set factory constraints
-        factory.setSizeThreshold(4096); // 设置缓冲区大小，这里是4kb
-        factory.setRepository(tempPathFile);// 设置缓冲区目录
+        ServletFileUpload upload = getServletFileUpload();
 
-        ServletFileUpload upload = new ServletFileUpload(factory);
         try {
             List<FileItem> items = upload.parseRequest(req);
             Iterator<FileItem> itr = items.iterator();
@@ -72,7 +87,5 @@ public class OrdninaryUploadAction implements UploadAction {
         resp.write(MessageHandler.getSuccessMessage());
         return true;
     }
-
-
 
 }
