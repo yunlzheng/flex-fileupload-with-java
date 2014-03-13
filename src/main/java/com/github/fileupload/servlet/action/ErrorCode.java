@@ -5,6 +5,8 @@ import java.util.Map;
 
 public enum ErrorCode {
 
+    PARSE_REQUEST_FALIS(300, "parse file content error"),
+    NOT_MULTIPART_CONTENT(400, "not mutipart request"),
     FILE_ALREADY_EXIST(410, "File already exists"),
     FILE_SIZE_EXCEED_MAXIMUM(420, "File size exceeds maximum"),
     FILE_TYPE_NOT_ALLOWED(430, "File type not allowed"),
@@ -17,31 +19,27 @@ public enum ErrorCode {
     TMPFILE_CLOULD_NOT_RENAME(550, "Temporary file could not be renamed to original"),
     FILE_DELETED_FAILED(555, "File could not be deleted"),
     COMPRESSION_NOT_SUPPORT(560, "Data compression not supported (ZLib)");
-
-    private int errorCode;
-    private String message;
-
     private static Map<Integer, String> codeMap = new HashMap<Integer, String>();
 
-    static{
+    static {
 
-        for(ErrorCode error:ErrorCode.values()){
+        for (ErrorCode error : ErrorCode.values()) {
             codeMap.put(error.getErrorCode(), error.getMessage());
         }
 
     }
 
-     public static String geteErrorMessage(int code) {
-        if(codeMap.containsKey(code)){
-            return codeMap.get(code);
-        }else{
-            return "unkown error!";
-        }
-     }
+    private int errorCode;
+    private String message;
 
     private ErrorCode(int errorCode, String message) {
         this.errorCode = errorCode;
         this.message = message;
+    }
+
+    public static String getErrorMessage(int code) {
+        System.out.println(codeMap.get(code));
+        return codeMap.get(code);
     }
 
     public int getErrorCode() {

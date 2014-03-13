@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 public class BigFileUploadAction implements UploadAction {
 
     @Override
-    public boolean paser(HttpServletRequest req, PrintWriter resp) throws ActionException {
+    public boolean doAction(HttpServletRequest req) throws FileUploadException {
         return false;
     }
 }

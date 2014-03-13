@@ -1,27 +1,23 @@
 package com.github.fileupload.servlet.action;
 
 import com.github.fileupload.servlet.Configuration;
-import com.github.fileupload.servlet.MessageHandler;
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileItemFactory;
-import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
 
 public class OrdninaryUploadAction implements UploadAction {
 
     private File uploadPathFile;
-    private  File tempPathFile;
+    private File tempPathFile;
     private String uploadPath;
     private Configuration configuration;
 
-    public OrdninaryUploadAction(){
+    public OrdninaryUploadAction() {
         this.configuration = new Configuration();
         this.Initialization();
     }
@@ -34,16 +30,16 @@ public class OrdninaryUploadAction implements UploadAction {
     private void Initialization() {
         uploadPath = this.configuration.getUploadPath();
         uploadPathFile = new File(uploadPath);
-        if(!uploadPathFile.exists()) {
+        if (!uploadPathFile.exists()) {
             uploadPathFile.mkdir();
         }
         tempPathFile = new File(this.configuration.getTempPath());
-        if(!tempPathFile.exists()) {
+        if (!tempPathFile.exists()) {
             tempPathFile.mkdir();
         }
     }
 
-    private  ServletFileUpload getServletFileUpload() {
+    private ServletFileUpload getServletFileUpload() {
         DiskFileItemFactory factory = new DiskFileItemFactory();
         // Set factory constraints
         factory.setSizeThreshold(this.configuration.getSizeThreshold()); // 设置缓冲区大小，这里是4kb
@@ -53,43 +49,51 @@ public class OrdninaryUploadAction implements UploadAction {
     }
 
     @Override
-    public boolean paser(HttpServletRequest req, PrintWriter resp) throws ActionException {
+    public boolean doAction(HttpServletRequest req) throws FileUploadException {
         String fileName = req.getParameter("fileName");
         String fileSize = req.getParameter("fileSize");
-        int fileOverwrite = Integer.parseInt(req.getParameter("fileOverwrite"));
+        int fileOverwrite = req.getParameter("fileOverwrite") != null ? Integer.parseInt(req.getParameter("fileOverwrite")) : 0;
         boolean isMutipart = ServletFileUpload.isMultipartContent(req);
-        if(!isMutipart){
-            resp.write(MessageHandler.getErrorMessage("Multipart错误"));
-            return false;
+        if (!isMutipart) {
+            throw new FileUploadException(ErrorCode.NOT_MULTIPART_CONTENT.getErrorCode());
         }
 
         ServletFileUpload upload = getServletFileUpload();
-
+        List<FileItem> items = null;
         try {
-            List<FileItem> items = upload.parseRequest(req);
-            Iterator<FileItem> itr = items.iterator();
-            while (itr.hasNext()) {
-                FileItem fi = (FileItem) itr.next();
-                if(fi.isFormField()) {
-                    continue;
-                }
-                File fullFile = new File(fileName);
-                File savedFile = new File(uploadPath, fullFile.getName());
-
-                if(fileOverwrite==1){
-                    savedFile.delete();
-                }
-                fi.write(savedFile);
-
-            }
+            items = upload.parseRequest(req);
         } catch (Exception e) {
-            e.printStackTrace();
-            resp.write(MessageHandler.getErrorMessage(e));
-            return false;
+            throw new FileUploadException(ErrorCode.PARSE_REQUEST_FALIS.getErrorCode());
+        } finally {
+            if (items != null) {
+                saveFile(items, fileName, fileOverwrite);
+            }
         }
-
-        resp.write(MessageHandler.getSuccessMessage());
+        ;
         return true;
+    }
+
+    private void saveFile(List<FileItem> items, String fileName, int fileOverwrite) throws FileUploadException {
+
+        Iterator<FileItem> itr = items.iterator();
+        while (itr.hasNext()) {
+            FileItem fi = (FileItem) itr.next();
+            if (fi.isFormField()) {
+                continue;
+            }
+            File fullFile = new File(fileName);
+            File savedFile = new File(uploadPath, fullFile.getName());
+
+            if (fileOverwrite == 1) {
+                savedFile.delete();
+            }
+            try {
+                fi.write(savedFile);
+            } catch (Exception e) {
+                throw new FileUploadException(ErrorCode.COULD_NOT_WRITE_FILE.getErrorCode());
+            }
+
+        }
     }
 
 }

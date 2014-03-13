@@ -1,6 +1,6 @@
 package com.github.fileupload.servlet;
 
-import com.github.fileupload.servlet.action.ActionException;
+import com.github.fileupload.servlet.action.FileUploadException;
 import com.github.fileupload.servlet.action.FileCheckAction;
 import com.github.fileupload.servlet.action.OrdninaryUploadAction;
 import com.github.fileupload.servlet.action.UploadAction;
@@ -27,12 +27,17 @@ public class UploaderServlet extends HttpServlet {
     protected void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         PrintWriter out = resp.getWriter();
-        UploadAction paser = this.loadUploadRequestPaser(req);
+        UploadAction paser = loadUploadRequestPaser(req);
         try {
-            paser.paser(req, out);
-        } catch (ActionException e) {
-            out.print("<error id=\"10\">ActionException</error>");
+            paser.doAction(req);
+        } catch (FileUploadException e) {
+            out.print(MessageHandler.getErrorMessage(e));
+            return;
+        } catch(Exception e ){
+            out.print(MessageHandler.getErrorMessage(e.getMessage()));
+            return;
         }
+        out.print(MessageHandler.getSuccessMessage());
 
     }
 

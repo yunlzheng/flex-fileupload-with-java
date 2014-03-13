@@ -16,12 +16,10 @@ public class FileCheckAction implements UploadAction {
     }
 
     @Override
-    public boolean paser(HttpServletRequest req, PrintWriter resp) throws ActionException {
+    public boolean doAction(HttpServletRequest req) throws FileUploadException {
         String fileName = req.getParameter("fileName");
         if(isFileExist(fileName)){
-            resp.write(MessageHandler.getErrorMessage(410, "File already exists"));
-        }else{
-            resp.write(MessageHandler.getSuccessMessage());
+            throw new FileUploadException(ErrorCode.FILE_ALREADY_EXIST.getErrorCode());
         }
         return false;
     }

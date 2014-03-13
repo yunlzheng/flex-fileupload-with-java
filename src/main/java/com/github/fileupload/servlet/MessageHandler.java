@@ -1,15 +1,19 @@
 package com.github.fileupload.servlet;
 
+import com.github.fileupload.servlet.action.ErrorCode;
+import com.github.fileupload.servlet.action.FileUploadException;
+
 public class MessageHandler {
 
     public static String getErrorMessage(String error) {
         return buildErrorMessage(0, error);
     }
 
-    public static String getErrorMessage(Exception ex) {
+    public static String getErrorMessage(FileUploadException ex) {
 
-        String error = ex.getMessage();
-        return buildErrorMessage(0, error);
+        int code = ex.getErrorCode();
+        String error = ErrorCode.getErrorMessage(code);
+        return buildErrorMessage(code, error);
 
     }
 
