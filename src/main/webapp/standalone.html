@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<div style="width:500px;margin:150px auto;">
+
 <div id="uploader">
 <script type="text/javascript">
  /** CONFIG SETTINGS FOR THE FILE UPLOADER **/
@@ -19,13 +19,13 @@
   	/** 
 	 * the maximum file size that can be upload in Bytes
 	 */
-	maxFileSize : (20 * 1024 * 1024), // 20mb
+	maxFileSize : (1024 * 1024 * 1024), // 20mb
   	/** 
 	 * the maximum size of a single post request in Bytes that can be uploaded
 	 * As the BigFileUpload transfers big files with several requests,
 	 * this setting specifies the maximum size of one of these requests.
 	 */
-	maxPostSize : (2 * 1024 * 1024) // 2mb
+	maxPostSize : (1024 * 1024 * 1024) // 2mb
   	/** 
 	 * a comma seperated list of file endings that are allowed to be uploaded
 	 */
@@ -39,6 +39,6 @@
 </script>
 <noscript><div class="swfNoScript" style="width:400px;height:400px"></div></noscript>
 </div>
-</div>
+
 </body>
 </html>
